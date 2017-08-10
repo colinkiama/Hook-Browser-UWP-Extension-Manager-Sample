@@ -9,4 +9,4 @@ Here is an extension that currently works with the sample: https://github.com/co
 
 I also recommend looking at the App Services Documentation: https://docs.microsoft.com/en-us/windows/uwp/launch-resume/how-to-create-and-consume-an-app-service
 
-Requires Windows 10 Anniversary Update SDK (14393) or higher
+Requires Windows 10 Anniversary Update SDK (14393) or higher and Viusal Studio 2017 (or newer).
