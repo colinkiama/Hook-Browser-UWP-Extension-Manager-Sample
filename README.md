@@ -4,4 +4,4 @@ Based on the App Extensibility Sample from Build 2016: https://github.com/Micros
 Feel free to fork it and customise the sample to your needs
 Actual Extensions that can be used are here:
 
-Requires Windows 10 Anniversary Update SDK(14393) or higher
+Requires Windows 10 Anniversary Update SDK (14393) or higher
