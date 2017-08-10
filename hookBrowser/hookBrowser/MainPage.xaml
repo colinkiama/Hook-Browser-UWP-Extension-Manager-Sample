@@ -16,7 +16,7 @@
                 VerticalAlignment="Center"
                 Width="200"
                 Height="50"
-                Content="GO!"
+                Content="Run"
                 FontSize="26"
                 FontWeight="SemiBold"
                 Background="Transparent"
