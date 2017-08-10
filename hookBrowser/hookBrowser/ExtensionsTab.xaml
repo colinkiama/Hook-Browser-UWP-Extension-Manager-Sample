@@ -1,0 +1,78 @@
+﻿<Page
+    x:Class="hookBrowser.ExtensionsTab"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:hookBrowser"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="ItemTemplate"
+                      x:DataType="local:Extension">
+            <RelativePanel Margin="20,5,5,10"
+                           Height="100"
+                           HorizontalAlignment="Left"
+                           Width="350">
+                <Image Margin="5,0"
+                       Source="{Binding Path=Logo}"
+                       x:Name="ExtensionLogo"
+                       RelativePanel.RightOf="ExtensionCheckbox"></Image>
+                <TextBlock Margin="10,10,0,0"
+                           x:Name="ExtensionTitle"
+                           FontWeight="Bold"
+                           Text="{x:Bind AppExtension.DisplayName}"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Center"
+                           RelativePanel.RightOf="ExtensionLogo"
+                           RelativePanel.AlignTopWithPanel="True" />
+                <TextBlock Margin="10,5,0,10"
+                           Text="{x:Bind AppExtension.Description}"
+                           HorizontalAlignment="Stretch"
+                           TextWrapping="Wrap"
+                           VerticalAlignment="Center"
+                           RelativePanel.RightOf="ExtensionLogo"
+                           RelativePanel.Below="ExtensionTitle"
+                           Name="ExtensionDescription"/>
+                <CheckBox x:Name="ExtensionCheckbox"
+                          IsChecked="{Binding Path=Enabled}"
+                          VerticalAlignment="Center"
+                          RelativePanel.AlignLeftWithPanel="True"
+                          RelativePanel.AlignVerticalCenterWithPanel="True"
+                          MinWidth="30"
+                          Checked="CheckBox_Checked"
+                          Unchecked="CheckBox_Unchecked" />
+                <Button Margin="10,0,0,0"
+                        RelativePanel.AlignVerticalCenterWithPanel="True"
+                        RelativePanel.AlignLeftWith="ExtensionDescription"                       
+                        RelativePanel.RightOf="ExtensionCheckbox"
+                        RelativePanel.Below="ExtensionDescription"
+                        Click="RemoveButton_Click">Remove</Button>
+            </RelativePanel>
+        </DataTemplate>
+    </Page.Resources>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Pivot>
+            <Pivot.LeftHeader>
+                <AppBarButton Icon="Back"
+                              Click="BackButton_Click" />
+            </Pivot.LeftHeader>
+
+            <Pivot.RightHeader>
+                <Grid>
+                    <AppBarButton Icon="Find"
+                                  x:Name="CompactSearchBox"
+                                  Visibility="Collapsed"
+                                  VerticalAlignment="Stretch">
+                    </AppBarButton>
+                </Grid>
+            </Pivot.RightHeader>
+
+            <PivotItem Header="All">
+                <ItemsControl ItemsSource="{x:Bind Items}"
+                              ItemTemplate="{StaticResource ItemTemplate}" />
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>
